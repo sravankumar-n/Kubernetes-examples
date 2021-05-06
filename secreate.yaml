@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysecret1
+  namespace: dev
+data:
+  username: jjdk
+  password: dnjl

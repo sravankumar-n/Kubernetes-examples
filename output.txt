@@ -1,0 +1,22 @@
+Name:                     myexternalapp-loadbalancer
+Namespace:                default
+Labels:                   app=myexternalapp
+                          type=frontend
+Annotations:              cloud.google.com/neg: {"ingress":true}
+Selector:                 app=myexternalapp,type=frontend
+Type:                     LoadBalancer
+IP Families:              <none>
+IP:                       10.8.4.93
+IPs:                      <none>
+LoadBalancer Ingress:     35.222.214.147
+Port:                     <unset>  8085/TCP
+TargetPort:               8080/TCP
+NodePort:                 <unset>  32310/TCP
+Endpoints:                <none>
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:
+  Type    Reason                Age    From                Message
+  ----    ------                ----   ----                -------
+  Normal  EnsuringLoadBalancer  3m22s  service-controller  Ensuring load balancer
+  Normal  EnsuredLoadBalancer   2m46s  service-controller  Ensured load balancer

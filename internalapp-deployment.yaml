@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+
+kind: Deployment
+metadata:
+  name: internalapp-deployment
+  namespace: dev
+  labels:
+    app: myinternalapp
+    type: backend
+
+spec:
+  template:
+    metadata:
+      name: internalapp-pod
+      labels:
+        app: myinternalapp
+    spec:
+      containers:
+        - name: internal-containers
+          image: sharavankumar/internal:1.0
+          env:
+          - name: username
+            valueFrom:
+              secretKeyRef:
+                name: mysecret1
+                key: username
+          - name: pwd
+            valueFrom:
+              secretKeyRef:
+                name: mysecret1
+                key: password
+          command: ["echo"]
+          args: ["${username} ${pwd}"] 
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myinternalapp  
